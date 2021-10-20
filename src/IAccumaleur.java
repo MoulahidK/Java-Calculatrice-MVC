@@ -1,6 +1,6 @@
 public interface IAccumaleur {
 
-    public void push(double numbreAEmpile);
+    public void push();
     public void drop();
     public void swap();
     public void add();

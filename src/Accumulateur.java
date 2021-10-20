@@ -1,15 +1,31 @@
 public class Accumulateur implements IAccumaleur {
 
     private Pile maPile ;
+    private String mAccumuler;
+    private boolean pointDejaSaisi = false;
 
-    public Accumulateur(Pile maPile) {
-        this.maPile = maPile;
+    public Accumulateur() {
+        this.maPile = new Pile();
+        this.mAccumuler = new String();
     }
 
     @Override
-    public void push(double nombreAEmpile) {
-        maPile.push(nombreAEmpile);
+    public void push() {
+        if (mAccumuler.startsWith(".") & mAccumuler.endsWith(".")) {
+            maPile.push(Double.parseDouble("0"));
+        } else {
+
+        }
+        if (mAccumuler.startsWith(".")) {
+            maPile.push(Double.parseDouble("0" + mAccumuler));
+        } else {
+            if (mAccumuler.endsWith(".")) {
+                maPile.push(Double.parseDouble(mAccumuler + "0"));
+            }
+        }
     }
+      
+
 
     @Override
     public void drop() {
@@ -21,8 +37,8 @@ public class Accumulateur implements IAccumaleur {
         if(maPile.size()>=2) {
             Double variableDepile1 = maPile.pop();
             Double variableDepile2 = maPile.pop();
-            push(variableDepile1);
-            push(variableDepile2);
+            maPile.push(variableDepile1);
+            maPile.push(variableDepile2);
         }
     }
 
@@ -32,7 +48,7 @@ public class Accumulateur implements IAccumaleur {
             Double variableDepile1 = maPile.pop();
             Double variableDepile2 = maPile.pop();
             Double variableAddition = variableDepile1 + variableDepile2;
-            push(variableAddition);
+            maPile.push(variableAddition);
         }
     }
 
@@ -42,7 +58,7 @@ public class Accumulateur implements IAccumaleur {
             Double variableDepile1 = maPile.pop();
             Double variableDepile2 = maPile.pop();
             Double variableSoustraction = variableDepile1 - variableDepile2;
-            push(variableSoustraction);
+            maPile.push(variableSoustraction);
         }
     }
 
@@ -53,7 +69,7 @@ public class Accumulateur implements IAccumaleur {
             Double variableDepile1 = maPile.pop();
             Double variableDepile2 = maPile.pop();
             Double variableMultiplication = variableDepile1 * variableDepile2;
-            push(variableMultiplication);
+            maPile.push(variableMultiplication);
         }
 
     }
@@ -68,7 +84,7 @@ public class Accumulateur implements IAccumaleur {
                 System.out.print("ZeroDivision Error");
             } else {
                 Double variableDivision = variableDepile1 / variableDepile2;
-                push(variableDivision);
+                maPile.push(variableDivision);
             }
 
         }
@@ -83,11 +99,18 @@ public class Accumulateur implements IAccumaleur {
 
     @Override
     public void backspace() {
-        maPile.pop();
+
     }
 
     @Override
     public void accumuler(char character) {
+
+        if(!(character == '.' & pointDejaSaisi)){
+            mAccumuler+=character;
+            if(character == '.'){
+                pointDejaSaisi=true;
+            }
+        }
 
     }
 
