@@ -1,4 +1,4 @@
-ppublic class Accumulateur implements IAccumaleur {
+public class Accumulateur implements IAccumaleur {
 
     private Pile maPile ;
 
@@ -26,12 +26,18 @@ ppublic class Accumulateur implements IAccumaleur {
 
     @Override
     public void add() {
-
+        Double variableDepile1 = maPile.pop();
+        Double variableDepile2 = maPile.pop();
+        Double variableAddition = variableDepile1 + variableDepile2;
+        push(variableAddition);
     }
 
     @Override
     public void sub() {
-
+        Double variableDepile1 = maPile.pop();
+        Double variableDepile2 = maPile.pop();
+        Double variableSoustraction = variableDepile1 - variableDepile2;
+        push(variableSoustraction);
     }
 
     @Override
