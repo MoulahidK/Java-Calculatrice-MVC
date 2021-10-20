@@ -1,4 +1,4 @@
-ppublic class Accumulateur implements IAccumaleur {
+public class Accumulateur implements IAccumaleur {
 
     private Pile maPile ;
 
@@ -26,6 +26,7 @@ ppublic class Accumulateur implements IAccumaleur {
 
     @Override
     public void add() {
+        
 
     }
 
