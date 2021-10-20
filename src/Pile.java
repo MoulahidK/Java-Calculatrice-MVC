@@ -1,4 +1,4 @@
-public class Pile extends java.util.Stack {
+public class Pile extends java.util.Stack<Double> {
 
     public Pile(){
         super();
@@ -6,10 +6,6 @@ public class Pile extends java.util.Stack {
 
     public void drop(){
         double elementElimine = (double) this.pop();
-    }
-
-    @Override public Double pop(){
-        return (double)this.pop();
     }
 
 }
