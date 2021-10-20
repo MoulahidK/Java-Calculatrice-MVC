@@ -7,8 +7,8 @@ public class Accumulateur implements IAccumaleur {
     }
 
     @Override
-    public void push(double numbreAEmpile) {
-        maPile.push(numbreAEmpile);
+    public void push(double nombreAEmpile) {
+        maPile.push(nombreAEmpile);
     }
 
     @Override
@@ -76,12 +76,14 @@ public class Accumulateur implements IAccumaleur {
 
     @Override
     public void neg() {
-
+        if(!maPile.isEmpty()){
+            maPile.push(-maPile.pop());
+        }
     }
 
     @Override
     public void backspace() {
-
+        maPile.pop();
     }
 
     @Override
