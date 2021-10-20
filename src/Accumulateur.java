@@ -42,12 +42,23 @@ public class Accumulateur implements IAccumaleur {
 
     @Override
     public void mult() {
-
+        Double variableDepile1 = maPile.pop();
+        Double variableDepile2 = maPile.pop();
+        Double variableMultiplication = variableDepile1*variableDepile2;
+        push(variableMultiplication);
     }
 
     @Override
     public void div() {
-
+        Double variableDepile1 = maPile.pop();
+        Double variableDepile2 = maPile.pop();
+        if (variableDepile2 == 0){
+            System.out.print("ZeroDivision Error");
+        }
+        else {
+            Double variableDivision= variableDepile1/variableDepile2;
+            push(variableDivision);
+        }
     }
 
     @Override
