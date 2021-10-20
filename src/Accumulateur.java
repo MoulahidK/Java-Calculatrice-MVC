@@ -48,16 +48,19 @@ public class Accumulateur implements IAccumaleur {
 
     @Override
     public void mult() {
+
         if(maPile.size()>=2) {
             Double variableDepile1 = maPile.pop();
             Double variableDepile2 = maPile.pop();
             Double variableMultiplication = variableDepile1 * variableDepile2;
             push(variableMultiplication);
         }
+
     }
 
     @Override
     public void div() {
+
         if(maPile.size()>=2) {
             Double variableDepile1 = maPile.pop();
             Double variableDepile2 = maPile.pop();
@@ -67,6 +70,7 @@ public class Accumulateur implements IAccumaleur {
                 Double variableDivision = variableDepile1 / variableDepile2;
                 push(variableDivision);
             }
+
         }
     }
 
