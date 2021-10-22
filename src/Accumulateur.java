@@ -13,20 +13,25 @@ public class Accumulateur implements IAccumaleur {
     public void push() {
         if (mAccumuler.startsWith(".") & mAccumuler.endsWith(".")) {
             maPile.push(Double.parseDouble("0"));
+            mAccumuler="";
         } else {
             if (mAccumuler.startsWith(".")) {
                 maPile.push(Double.parseDouble("0" + mAccumuler));
+                mAccumuler="";
             } else {
                 if (mAccumuler.endsWith(".")) {
                     maPile.push(Double.parseDouble(mAccumuler + "0"));
+                    mAccumuler="";
                 }else{
                     maPile.push(Double.parseDouble(mAccumuler));
+                    mAccumuler="";
                 }
             }
         }
 
-    }
 
+
+    }
 
 
     @Override
@@ -105,7 +110,7 @@ public class Accumulateur implements IAccumaleur {
     @Override
     public void accumuler(char character) {
        if(!(character == '.' & pointDejaSaisi)){
-            mAccumuler+=character;
+            mAccumuler+=String.valueOf(character);
             if(character == '.'){
                 pointDejaSaisi=true;
             }
