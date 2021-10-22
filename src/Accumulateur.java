@@ -1,6 +1,6 @@
 public class Accumulateur implements IAccumaleur {
 
-    private Pile maPile ;
+    public Pile maPile ;
     private String mAccumuler;
     private boolean pointDejaSaisi = false;
 
@@ -14,17 +14,19 @@ public class Accumulateur implements IAccumaleur {
         if (mAccumuler.startsWith(".") & mAccumuler.endsWith(".")) {
             maPile.push(Double.parseDouble("0"));
         } else {
-
-        }
-        if (mAccumuler.startsWith(".")) {
-            maPile.push(Double.parseDouble("0" + mAccumuler));
-        } else {
-            if (mAccumuler.endsWith(".")) {
-                maPile.push(Double.parseDouble(mAccumuler + "0"));
+            if (mAccumuler.startsWith(".")) {
+                maPile.push(Double.parseDouble("0" + mAccumuler));
+            } else {
+                if (mAccumuler.endsWith(".")) {
+                    maPile.push(Double.parseDouble(mAccumuler + "0"));
+                }else{
+                    maPile.push(Double.parseDouble(mAccumuler));
+                }
             }
         }
+
     }
-      
+
 
 
     @Override
@@ -64,19 +66,16 @@ public class Accumulateur implements IAccumaleur {
 
     @Override
     public void mult() {
-
         if(maPile.size()>=2) {
             Double variableDepile1 = maPile.pop();
             Double variableDepile2 = maPile.pop();
             Double variableMultiplication = variableDepile1 * variableDepile2;
             maPile.push(variableMultiplication);
         }
-
     }
 
     @Override
     public void div() {
-
         if(maPile.size()>=2) {
             Double variableDepile1 = maPile.pop();
             Double variableDepile2 = maPile.pop();
@@ -86,7 +85,6 @@ public class Accumulateur implements IAccumaleur {
                 Double variableDivision = variableDepile1 / variableDepile2;
                 maPile.push(variableDivision);
             }
-
         }
     }
 
@@ -99,23 +97,24 @@ public class Accumulateur implements IAccumaleur {
 
     @Override
     public void backspace() {
-
+        if (mAccumuler != null && mAccumuler.length() > 0 ) {
+            mAccumuler = mAccumuler.substring(0, mAccumuler.length() - 1);
+        }
     }
 
     @Override
     public void accumuler(char character) {
-
-        if(!(character == '.' & pointDejaSaisi)){
+       if(!(character == '.' & pointDejaSaisi)){
             mAccumuler+=character;
             if(character == '.'){
                 pointDejaSaisi=true;
             }
-        }
-
+       }
     }
 
     @Override
     public void reset() {
-
+        mAccumuler="";
+        this.maPile=new Pile();
     }
 }
